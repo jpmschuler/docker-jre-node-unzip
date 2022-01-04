@@ -15,3 +15,9 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     yarn \
   && apt-get upgrade -qq \
   && rm -rf /var/lib/apt/lists/*
+
+# update npm
+RUN npm install -g npm@latest
+
+# add node-gyp and headers \
+RUN export NODEVERSION=$(node --version); mkdir -p /home/root/node-headers/; curl -k -o /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz -L https://nexus.com/repository/binaries/node/${NODEVERSION}/node-${NODEVERSION}-headers.tar.gz; npm config set tarball /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz
