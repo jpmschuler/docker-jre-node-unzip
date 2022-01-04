@@ -13,6 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     unzip \
     nodejs \
     yarn \
+    allure \
   && apt-get upgrade -qq \
   && rm -rf /var/lib/apt/lists/*
 
