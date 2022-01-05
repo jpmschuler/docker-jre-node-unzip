@@ -1,0 +1,28 @@
+{
+  "name": "docker-jre-node-unzip",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:latest && npm run build:current",
+    "build:latest": "docker build . -t jpmschuler/docker-jre-node-unzip:latest",
+    "build:current": "docker build . -t jpmschuler/docker-jre-node-unzip:$(npm pkg get version | tr -d '\"')",
+    "dockerpush": "npm run dockerpush:latest && npm run dockerpush:current",
+    "dockerpush:latest": "docker push jpmschuler/docker-jre-node-unzip:latest",
+    "dockerpush:current": "docker push jpmschuler/docker-jre-node-unzip:$(npm pkg get version | tr -d '\"')",
+    "tag:current": "git tag $(npm pkg get version | tr -d '\"')",
+    "git:push": "git push; git push --tags",
+    "release": "npm run build && npm run dockerpush && npm run git:push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpmschuler/docker-jre-node-unzip.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpmschuler/docker-jre-node-unzip/issues"
+  },
+  "homepage": "https://github.com/jpmschuler/docker-jre-node-unzip#readme"
+}
