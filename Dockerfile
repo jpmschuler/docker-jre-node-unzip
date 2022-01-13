@@ -18,9 +18,10 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
 
 # update npm
 RUN npm install -g npm@latest
+RUN npm install -g pnpm
 
 # add node-gyp and headers \
-RUN export NODEVERSION=$(node --version); mkdir -p /home/root/node-headers/; curl -k -o /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz -L https://nexus.com/repository/binaries/node/${NODEVERSION}/node-${NODEVERSION}-headers.tar.gz; npm config set tarball /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz
+RUN export NODEVERSION=$(node --version); mkdir -p /home/root/node-headers/; curl -k -o /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz -L https://nodejs.org/download/release/${NODEVERSION}/node-${NODEVERSION}-headers.tar.gz; npm config set tarball /home/root/node-headers/node-${NODEVERSION}-headers.tar.gz
 
 # install allure
 RUN npm install -g allure-commandline
